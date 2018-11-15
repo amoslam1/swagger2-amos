@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.amos.framework.exception.bean.ErrorCode;
-import org.amos.swagger2.model.auto.user.User;
+import org.amos.swagger2.model.auto.permissions.User;
 import org.amos.swagger2.model.custom.permissions.PMSUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

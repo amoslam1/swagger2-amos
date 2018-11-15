@@ -25,7 +25,6 @@
 		<pagehelper-spring-boot-starter.version>1.1.1</pagehelper-spring-boot-starter.version>
 		<pagehelper.version>4.1.0</pagehelper.version>
 		<swagger2.version>2.9.2</swagger2.version>
-		<spring-boot-publish-swagger2-start.version>1.0.0-SNAPSHOT</spring-boot-publish-swagger2-start.version>
 	</properties>
 
 	<dependencyManagement>
@@ -43,11 +42,6 @@
 	            <version>${swagger2.version}</version>
 	        </dependency>
 	        
-	        <dependency>
-				<groupId>org.amos</groupId>
-				<artifactId>spring-boot-publish-swagger2-start</artifactId>
-				<version>${spring-boot-publish-swagger2-start.version}</version>
-			</dependency>
 	        <!-- Swagger end-->
 	        
 			<dependency>
@@ -56,21 +50,21 @@
 				<version>1.0.0-SNAPSHOT</version>
 			</dependency>
 			
-			<!-- spring boot jwt token»úÖÆÒÀÀµ -->
+			<!-- spring boot jwt tokenï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -->
 			<dependency>
 			    <groupId>io.jsonwebtoken</groupId>
 			    <artifactId>jjwt</artifactId>
 			    <version>${jjwt.version}</version>
 			</dependency>
 			
-			<!--mybatis spring boot ÒÀÀµ -->
+			<!--mybatis spring boot ï¿½ï¿½ï¿½ï¿½ -->
 			<dependency>
 				<groupId>org.mybatis.spring.boot</groupId>
 				<artifactId>mybatis-spring-boot-starter</artifactId>
 				<version>${mybatis-spring-boot-starter.version}</version>
 			</dependency>
 			
-			<!--°¢Àï Druid Spring Boot StarterÒÀÀµ -->
+			<!--ï¿½ï¿½ï¿½ï¿½ Druid Spring Boot Starterï¿½ï¿½ï¿½ï¿½ -->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>druid-spring-boot-starter</artifactId>

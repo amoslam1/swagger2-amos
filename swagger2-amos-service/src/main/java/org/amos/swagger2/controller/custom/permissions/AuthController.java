@@ -3,8 +3,8 @@ package org.amos.swagger2.controller.custom.permissions;
 import org.amos.framework.utils.ConvertUtils;
 import org.amos.swagger2.controller.bean.request.custom.permissions.LoginRequest;
 import org.amos.swagger2.controller.bean.request.custom.permissions.RegisterRequest;
-import org.amos.swagger2.model.auto.user.User;
-import org.amos.swagger2.service.custom.user.UserService;
+import org.amos.swagger2.model.auto.permissions.User;
+import org.amos.swagger2.service.custom.permissions.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
-@Api(tags = "授权")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -33,7 +29,6 @@ public class AuthController {
      * @return 操作结果
      * @throws AuthenticationException 错误信息
      */
-	@ApiOperation(value="登录",notes="登录操作")
     @PostMapping(value = "/login")
     public String login(@RequestBody LoginRequest login) {
     	
@@ -47,7 +42,6 @@ public class AuthController {
      * @return 操作结果
      * @throws AuthenticationException 错误信息
      */
-	@ApiOperation(value="注册",notes="注册操作")
     @PostMapping(value = "/register")
     public Boolean register(@RequestBody RegisterRequest request){
     	
@@ -64,7 +58,6 @@ public class AuthController {
      * @return 新密钥
      * @throws AuthenticationException 错误信息
      */
-	@ApiOperation(value="重置",notes="重置操作")
     @GetMapping(value = "/refreshToken")
     public String refreshToken(@RequestHeader String authorization){
     	

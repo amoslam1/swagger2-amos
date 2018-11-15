@@ -20,7 +20,7 @@ import org.amos.framework.utils.RegUtils;
 import org.amos.swagger2.common.constants.Constants;
 import org.amos.swagger2.common.redis.RedisHandler;
 import org.amos.swagger2.common.redis.RedisUtils;
-import org.amos.swagger2.model.auto.user.User;
+import org.amos.swagger2.model.auto.permissions.User;
 import org.amos.swagger2.model.custom.permissions.PMSUser;
 import org.amos.swagger2.springboot.utils.JwtTokenUtils;
 import org.apache.commons.lang3.StringUtils;

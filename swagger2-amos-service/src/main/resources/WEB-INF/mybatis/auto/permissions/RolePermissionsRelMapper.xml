@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.amos.swagger2.mapper.auto.permissions.RolePermissionsRelMapper">
+  <resultMap id="BaseResultMap" type="org.amos.swagger2.model.auto.permissions.RolePermissionsRel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="permissions_id" jdbcType="BIGINT" property="permissionsId" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+</mapper>

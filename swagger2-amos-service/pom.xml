@@ -12,22 +12,6 @@
 
 	<dependencies>
 		
-		<dependency>
-			<groupId>org.amos</groupId>
-			<artifactId>spring-boot-publish-swagger2-start</artifactId>
-		</dependency>
-		<!-- Swagger start-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-        </dependency>
- 
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-        </dependency>
-        <!-- Swagger end-->
-		
 		<!-- amos framework start -->
 		<dependency>
 			<groupId>org.amos</groupId>

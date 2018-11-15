@@ -15,9 +15,37 @@ public class TestCodeGenerator {
 		GenCodeGenerator userGen = new GenCodeGenerator();
 		userGen.setTableName("user");
 		userGen.setAliasName("User");
-		userGen.setModelName("user");
+		userGen.setModelName("permissions");
 		userGen.setTableRemarks("用户");
 		gcg.add(userGen);
+		
+		GenCodeGenerator roleGen = new GenCodeGenerator();
+		roleGen.setTableName("role");
+		roleGen.setAliasName("Role");
+		roleGen.setModelName("permissions");
+		roleGen.setTableRemarks("角色");
+		gcg.add(roleGen);
+		
+		GenCodeGenerator userRoleGen = new GenCodeGenerator();
+		userRoleGen.setTableName("user_role_rel");
+		userRoleGen.setAliasName("UserRoleRel");
+		userRoleGen.setModelName("permissions");
+		userRoleGen.setTableRemarks("用户角色关联");
+		gcg.add(userRoleGen);
+		
+		GenCodeGenerator permissionsGen = new GenCodeGenerator();
+		permissionsGen.setTableName("permissions");
+		permissionsGen.setAliasName("Permissions");
+		permissionsGen.setModelName("permissions");
+		permissionsGen.setTableRemarks("权限");
+		gcg.add(permissionsGen);
+		
+		GenCodeGenerator rolePermissionsGen = new GenCodeGenerator();
+		rolePermissionsGen.setTableName("role_permissions_rel");
+		rolePermissionsGen.setAliasName("RolePermissionsRel");
+		rolePermissionsGen.setModelName("permissions");
+		rolePermissionsGen.setTableRemarks("用户");
+		gcg.add(rolePermissionsGen);
 
 		for (GenCodeGenerator enCodeGenerator : gcg) {
 
@@ -28,7 +56,7 @@ public class TestCodeGenerator {
 			 * params 4 模块名
 			 */
 			blowCG.genCode(PATH, enCodeGenerator.getTableName(), enCodeGenerator.getAliasName()
-					,enCodeGenerator.getModelName(),enCodeGenerator.getTableRemarks());
+					,enCodeGenerator.getModelName());
 		}
 	}
 }

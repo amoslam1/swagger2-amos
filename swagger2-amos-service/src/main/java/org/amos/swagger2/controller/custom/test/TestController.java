@@ -13,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
-@Api(tags = "测试")
 @RestController
 @RequestMapping("/test")
 public class TestController {
@@ -24,7 +20,6 @@ public class TestController {
 	@Autowired
 	private RedisUtils redisUtils;
 	
-	@ApiOperation(value="测试成功",notes="成功请求响应信息会被包装，输出统一格式")
 	@PostMapping("/success")
 	@ResponseBody
 	public String success() {
@@ -32,7 +27,6 @@ public class TestController {
 		return "success";
 	}
 	
-	@ApiOperation(value="测试Redis超时时间",notes="响应Redis超时时间")
 	@PostMapping("/redisTimeout")
 	@ResponseBody
 	public Long redisTimeout() {
@@ -40,7 +34,6 @@ public class TestController {
 		return redisUtils.getExpire("YW1vcw==");
 	}
 	
-	@ApiOperation(value="测试业务异常",notes="响应异常信息会被包装，输出统一格式")
 	@PostMapping("/businessException")
 	@ResponseBody
 	public String businessException() {
@@ -48,7 +41,6 @@ public class TestController {
 		throw new BusinessException(ErrorCode.SUCCESS);
 	}
 	
-	@ApiOperation(value="测试校验",notes="校验信息会被包装，输出统一格式")
 	@PostMapping("/validator")
 	@ResponseBody
 	public String validator(@RequestBody PageRequest<ValidatorRequest> request) {
@@ -56,7 +48,6 @@ public class TestController {
 		throw new BusinessException(ErrorCode.ERR_DATA_EMPTY_ERROR);
 	}
 
-	@ApiOperation(value="测试Spring Security权限控制",notes="校验是否被权限控制")
 	@PreAuthorize("hasRole('ADMIN')")
     @PostMapping(value = "/getInfo")
     public String getRole(){

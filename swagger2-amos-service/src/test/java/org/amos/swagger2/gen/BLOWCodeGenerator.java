@@ -2,7 +2,7 @@ package org.amos.swagger2.gen;
 
 import java.util.List;
 
-import org.amos.framework.generator.MySQLSwagger2CodeGenerator;
+import org.amos.framework.generator.MySQLCodeGenerator;
 
 /**
  * ===============================
@@ -11,7 +11,7 @@ import org.amos.framework.generator.MySQLSwagger2CodeGenerator;
  * 内容：自定义生成信息
  * ===============================
  */
-public class BLOWCodeGenerator extends MySQLSwagger2CodeGenerator{
+public class BLOWCodeGenerator extends MySQLCodeGenerator{
 
 	@Override
 	protected List<String> saveExcludeField(List<String> saveExcludeField) {

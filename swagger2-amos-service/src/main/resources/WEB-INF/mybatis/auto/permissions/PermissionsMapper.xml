@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.amos.swagger2.mapper.auto.permissions.PermissionsMapper">
+  <resultMap id="BaseResultMap" type="org.amos.swagger2.model.auto.permissions.Permissions">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="zh_cn_name" jdbcType="VARCHAR" property="zhCnName" />
+    <result column="zh_hk_name" jdbcType="VARCHAR" property="zhHkName" />
+    <result column="en_name" jdbcType="VARCHAR" property="enName" />
+    <result column="permissions_name" jdbcType="VARCHAR" property="permissionsName" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="is_disable" jdbcType="TINYINT" property="isDisable" />
+    <result column="priority" jdbcType="TINYINT" property="priority" />
+    <result column="pms_or_ctl" jdbcType="VARCHAR" property="pmsOrCtl" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+</mapper>
