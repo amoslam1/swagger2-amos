@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+           http://www.springframework.org/schema/aop   
+           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/mvc  
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd"
+	default-autowire="byName">
+	
+	<!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->  
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">  
+	    <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>  
+	    <!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->  
+	    <property name="validationMessageSource" ref="messageSource"/>  
+	</bean>
+    
+	<!-- 配置国际化资源文件路径 -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<!-- 定义消息资源文件的相对路径 -->
+				<value>classpath:WEB-INF/i18n/validate</value>
+				<value>classpath:WEB-INF/i18n/message</value>
+			</list>
+		</property> 
+		<!-- 如果在国际化资源文件中找不到对应代码的信息，就用这个代码作为名称  -->
+		<!-- 如果为true，字符串中的占位符则无效  -->
+        <property name="useCodeAsDefaultMessage" value="false"/>  
+        <property name="defaultEncoding" value="UTF-8"/> 
+        <property name="cacheSeconds" value="-1"/>
+	</bean>
+	
+	<!-- 基于Cookie的本地化解析器 -->
+	 <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+	 	<property name="cookieMaxAge" value="-1"/>
+	 	<property name="defaultLocale" value="zh_CN"/>
+	 	<property name="cookieName" value="lang" />
+	 </bean>
+	<!--<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />-->	
+	
+	<!-- 返回json 方法一 需要导入 fastjson.jar包 -->  
+	<mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+            <bean id="fastJsonHttpMessageConverter" class="org.amos.swagger2.common.global.GlobalHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="features">
+					<array>
+						<value>QuoteFieldNames</value>
+						<value>UseISO8601DateFormat</value>
+						<value>WriteMapNullValue</value>
+						<value>WriteNullStringAsEmpty</value>
+						<value>WriteNullListAsEmpty</value>
+						<value>WriteNullNumberAsZero</value>
+						<value>BrowserCompatible</value>
+						<value>PrettyFormat</value>
+						<value>WriteDateUseDateFormat</value>
+					</array>
+				</property>
+				<property name="defaultDateFormat" value="yyyy-MM-dd HH:mm:ss" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+</beans>

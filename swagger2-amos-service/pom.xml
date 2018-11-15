@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.amos</groupId>
+		<artifactId>swagger2-amos</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>swagger2-amos-service</artifactId>
+
+	<dependencies>
+		
+		<dependency>
+			<groupId>org.amos</groupId>
+			<artifactId>spring-boot-publish-swagger2-start</artifactId>
+		</dependency>
+		<!-- Swagger start-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+ 
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <!-- Swagger end-->
+		
+		<!-- amos framework start -->
+		<dependency>
+			<groupId>org.amos</groupId>
+			<artifactId>framework</artifactId>
+		</dependency>
+		<!-- amos framework end -->
+		
+		<!-- 热部署模块 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		    <optional>true</optional> <!-- 这个需要为 true 热部署才有效 不能被其它模块继承，如果多个子模块可以去掉  不必须-->
+		    <scope>runtime</scope><!-- 只在运行时起作用  打包时不打进去 -->
+		</dependency>
+		
+		<!-- spring boot start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions><!-- 去掉默认配置 -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency> <!-- 引入log4j2依赖 -->
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-log4j2</artifactId>
+		</dependency>
+		
+		<!-- spring boot test start -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- spring boot test end -->
+		
+		<!-- spring boot redis start -->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- spring boot redis end -->
+		
+		<!-- spring boot mybatis start -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
+		
+		<!--阿里 Druid Spring Boot Starter依赖 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
+		
+		<!-- spring boot mybatis end -->
+		
+		<!-- spring boot tk mybatis start -->
+		<dependency>
+		    <groupId>tk.mybatis</groupId>
+		    <artifactId>mapper-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- spring boot tk mybatis end -->
+		
+		<dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+		
+		<!-- spring boot 集成 JWT token机制 start -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-actuator</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		</dependency>
+		<!-- spring boot 集成 JWT token机制 end -->
+		
+		<!-- spring boot end -->
+		
+		<!-- spring test start -->
+		<dependency>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-test</artifactId>
+	    </dependency>
+	    <!-- spring test end -->
+
+	    <dependency>
+	    	<groupId>org.springframework.boot</groupId>
+	    	<artifactId>spring-boot-configuration-processor</artifactId>
+	    	<optional>true</optional>
+	    </dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-maven-plugin</artifactId>
+			    <configuration>
+			        <fork>true</fork>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

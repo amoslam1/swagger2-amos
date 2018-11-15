@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.amos.swagger2.mapper.auto.user.UserMapper">
+  <resultMap id="BaseResultMap" type="org.amos.swagger2.model.auto.user.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="portrait_url" jdbcType="VARCHAR" property="portraitUrl" />
+    <result column="is_disable" jdbcType="TINYINT" property="isDisable" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modifed_time" jdbcType="TIMESTAMP" property="modifedTime" />
+  </resultMap>
+</mapper>
