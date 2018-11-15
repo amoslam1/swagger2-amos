@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.amos.swagger2.controller.bean.request.auto.permissions.SaveRolePermissionsRelRequest;
 import org.amos.swagger2.controller.bean.request.auto.permissions.UpdateRolePermissionsRelRequest;
@@ -32,7 +33,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:31
+ * 时间：2018-11-15 20:01:32
  * 内容：RolePermissionsRelAutoController
  * ===============================
 */
@@ -44,6 +45,7 @@ public class RolePermissionsRelAutoController {
     @Autowired
     private RolePermissionsRelAutoService rolePermissionsRelService;
 
+	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:save')")
     @PostMapping("/save")
     @ResponseBody
     public Boolean save(SaveRolePermissionsRelRequest request) {
@@ -54,6 +56,7 @@ public class RolePermissionsRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:delete')")
     @PostMapping("/delete")
     @ResponseBody
     public Boolean delete(DeleteRolePermissionsRelRequest request) {
@@ -63,6 +66,7 @@ public class RolePermissionsRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:update')")
     @PostMapping("/update")
     @ResponseBody
     public Boolean update(UpdateRolePermissionsRelRequest request) {
@@ -73,6 +77,7 @@ public class RolePermissionsRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:getById')")
     @PostMapping("/getById")
     @ResponseBody
     public RolePermissionsRel getById(GetByIdRolePermissionsRelRequest request) {
@@ -80,7 +85,8 @@ public class RolePermissionsRelAutoController {
         RolePermissionsRel rolePermissionsRel = rolePermissionsRelService.getById(request.getId());
         return rolePermissionsRel;
     }
-    
+  
+  	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:findAll')")  
     @PostMapping("/findAll")
     @ResponseBody
     public List<RolePermissionsRel> findAll() {
@@ -93,7 +99,8 @@ public class RolePermissionsRelAutoController {
         }
         return list;
     }
-    
+   
+  	@PreAuthorize("hasAuthority('RolePermissionsRelAuto:getByRolePermissionsRel')")
     @PostMapping("/getByRolePermissionsRel")
     @ResponseBody
     public RolePermissionsRel getByRolePermissionsRel(FindByRolePermissionsRelRequest request) throws Exception {
@@ -109,7 +116,8 @@ public class RolePermissionsRelAutoController {
     	}
         return obj;
     }
-    
+  
+    @PreAuthorize("hasAuthority('RolePermissionsRelAuto:findByRolePermissionsRel')")  
     @PostMapping("/findByRolePermissionsRel")
     @ResponseBody
     public List<RolePermissionsRel> findByRolePermissionsRel(FindByRolePermissionsRelRequest request) throws Exception {
@@ -126,7 +134,8 @@ public class RolePermissionsRelAutoController {
         }
         return list;
     }
-    
+  
+    @PreAuthorize("hasAuthority('RolePermissionsRelAuto:findRolePermissionsRelByPage')")   
     @PostMapping("/findRolePermissionsRelByPage")
     @ResponseBody
     public Page<RolePermissionsRel> findRolePermissionsRelByPage(PageRequest<FindByRolePermissionsRelRequest> request) throws Exception {

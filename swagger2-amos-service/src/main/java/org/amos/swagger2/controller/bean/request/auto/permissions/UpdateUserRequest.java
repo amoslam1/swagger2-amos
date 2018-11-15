@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:32
+ * 时间：2018-11-15 20:01:33
  * 内容：User Object
  * ===============================
 */
@@ -33,11 +33,6 @@ public class UpdateUserRequest  extends BaseRequest{
 	private String password;
 
 	/**
-	 * 盐（随机数）
-	 */
-	private String salt;
-
-	/**
 	 * 邮箱
 	 */
 	private String email;
@@ -56,11 +51,6 @@ public class UpdateUserRequest  extends BaseRequest{
 	 * 是否禁用（0：正常、1：禁用）
 	 */
 	private Byte isDisable;
-
-	/**
-	 * 用户会话ID
-	 */
-	private String sessionId;
 
 	/**
 	 * 创建者
@@ -96,14 +86,6 @@ public class UpdateUserRequest  extends BaseRequest{
 		return password;
 	}
 
-	public void setSalt(String salt){
-		this.salt = salt;
-	}
-
-	public String getSalt(){
-		return salt;
-	}
-
 	public void setEmail(String email){
 		this.email = email;
 	}
@@ -134,14 +116,6 @@ public class UpdateUserRequest  extends BaseRequest{
 
 	public Byte getIsDisable(){
 		return isDisable;
-	}
-
-	public void setSessionId(String sessionId){
-		this.sessionId = sessionId;
-	}
-
-	public String getSessionId(){
-		return sessionId;
 	}
 
 	public void setCreator(String creator){

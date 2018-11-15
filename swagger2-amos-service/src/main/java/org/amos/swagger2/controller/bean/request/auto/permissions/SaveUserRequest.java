@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:32
+ * 时间：2018-11-15 20:01:33
  * 内容：User Object
  * ===============================
 */
@@ -30,13 +30,6 @@ public class SaveUserRequest  extends BaseRequest{
 	private String password;
 
 	/**
-	 * 盐（随机数）
-	 */
-	@Length(max = 32,message = "{params.length.must.be.more.than.value}")
-	@NotEmpty(message = "{params.is.not.empty}")
-	private String salt;
-
-	/**
 	 * 邮箱
 	 */
 	private String email;
@@ -54,11 +47,6 @@ public class SaveUserRequest  extends BaseRequest{
 	@Length(max = 256,message = "{params.length.must.be.more.than.value}")
 	@NotEmpty(message = "{params.is.not.empty}")
 	private String portraitUrl;
-
-	/**
-	 * 用户会话ID
-	 */
-	private String sessionId;
 
 	/**
 	 * 创建者
@@ -90,14 +78,6 @@ public class SaveUserRequest  extends BaseRequest{
 		return password;
 	}
 
-	public void setSalt(String salt){
-		this.salt = salt;
-	}
-
-	public String getSalt(){
-		return salt;
-	}
-
 	public void setEmail(String email){
 		this.email = email;
 	}
@@ -120,14 +100,6 @@ public class SaveUserRequest  extends BaseRequest{
 
 	public String getPortraitUrl(){
 		return portraitUrl;
-	}
-
-	public void setSessionId(String sessionId){
-		this.sessionId = sessionId;
-	}
-
-	public String getSessionId(){
-		return sessionId;
 	}
 
 	public void setCreator(String creator){

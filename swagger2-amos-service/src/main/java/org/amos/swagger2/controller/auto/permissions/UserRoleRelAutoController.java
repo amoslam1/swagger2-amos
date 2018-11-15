@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.amos.swagger2.controller.bean.request.auto.permissions.SaveUserRoleRelRequest;
 import org.amos.swagger2.controller.bean.request.auto.permissions.UpdateUserRoleRelRequest;
@@ -32,7 +33,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:31
+ * 时间：2018-11-15 20:01:32
  * 内容：UserRoleRelAutoController
  * ===============================
 */
@@ -44,6 +45,7 @@ public class UserRoleRelAutoController {
     @Autowired
     private UserRoleRelAutoService userRoleRelService;
 
+	@PreAuthorize("hasAuthority('UserRoleRelAuto:save')")
     @PostMapping("/save")
     @ResponseBody
     public Boolean save(SaveUserRoleRelRequest request) {
@@ -54,6 +56,7 @@ public class UserRoleRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserRoleRelAuto:delete')")
     @PostMapping("/delete")
     @ResponseBody
     public Boolean delete(DeleteUserRoleRelRequest request) {
@@ -63,6 +66,7 @@ public class UserRoleRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserRoleRelAuto:update')")
     @PostMapping("/update")
     @ResponseBody
     public Boolean update(UpdateUserRoleRelRequest request) {
@@ -73,6 +77,7 @@ public class UserRoleRelAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserRoleRelAuto:getById')")
     @PostMapping("/getById")
     @ResponseBody
     public UserRoleRel getById(GetByIdUserRoleRelRequest request) {
@@ -80,7 +85,8 @@ public class UserRoleRelAutoController {
         UserRoleRel userRoleRel = userRoleRelService.getById(request.getId());
         return userRoleRel;
     }
-    
+  
+  	@PreAuthorize("hasAuthority('UserRoleRelAuto:findAll')")  
     @PostMapping("/findAll")
     @ResponseBody
     public List<UserRoleRel> findAll() {
@@ -93,7 +99,8 @@ public class UserRoleRelAutoController {
         }
         return list;
     }
-    
+   
+  	@PreAuthorize("hasAuthority('UserRoleRelAuto:getByUserRoleRel')")
     @PostMapping("/getByUserRoleRel")
     @ResponseBody
     public UserRoleRel getByUserRoleRel(FindByUserRoleRelRequest request) throws Exception {
@@ -109,7 +116,8 @@ public class UserRoleRelAutoController {
     	}
         return obj;
     }
-    
+  
+    @PreAuthorize("hasAuthority('UserRoleRelAuto:findByUserRoleRel')")  
     @PostMapping("/findByUserRoleRel")
     @ResponseBody
     public List<UserRoleRel> findByUserRoleRel(FindByUserRoleRelRequest request) throws Exception {
@@ -126,7 +134,8 @@ public class UserRoleRelAutoController {
         }
         return list;
     }
-    
+  
+    @PreAuthorize("hasAuthority('UserRoleRelAuto:findUserRoleRelByPage')")   
     @PostMapping("/findUserRoleRelByPage")
     @ResponseBody
     public Page<UserRoleRel> findUserRoleRelByPage(PageRequest<FindByUserRoleRelRequest> request) throws Exception {

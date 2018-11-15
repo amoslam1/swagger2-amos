@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.amos.swagger2.controller.bean.request.auto.permissions.SaveUserRequest;
 import org.amos.swagger2.controller.bean.request.auto.permissions.UpdateUserRequest;
@@ -32,7 +33,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:31
+ * 时间：2018-11-15 20:01:32
  * 内容：UserAutoController
  * ===============================
 */
@@ -44,6 +45,7 @@ public class UserAutoController {
     @Autowired
     private UserAutoService userService;
 
+	@PreAuthorize("hasAuthority('UserAuto:save')")
     @PostMapping("/save")
     @ResponseBody
     public Boolean save(SaveUserRequest request) {
@@ -54,6 +56,7 @@ public class UserAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserAuto:delete')")
     @PostMapping("/delete")
     @ResponseBody
     public Boolean delete(DeleteUserRequest request) {
@@ -63,6 +66,7 @@ public class UserAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserAuto:update')")
     @PostMapping("/update")
     @ResponseBody
     public Boolean update(UpdateUserRequest request) {
@@ -73,6 +77,7 @@ public class UserAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('UserAuto:getById')")
     @PostMapping("/getById")
     @ResponseBody
     public User getById(GetByIdUserRequest request) {
@@ -80,7 +85,8 @@ public class UserAutoController {
         User user = userService.getById(request.getId());
         return user;
     }
-    
+  
+  	@PreAuthorize("hasAuthority('UserAuto:findAll')")  
     @PostMapping("/findAll")
     @ResponseBody
     public List<User> findAll() {
@@ -93,7 +99,8 @@ public class UserAutoController {
         }
         return list;
     }
-    
+   
+  	@PreAuthorize("hasAuthority('UserAuto:getByUser')")
     @PostMapping("/getByUser")
     @ResponseBody
     public User getByUser(FindByUserRequest request) throws Exception {
@@ -109,7 +116,8 @@ public class UserAutoController {
     	}
         return obj;
     }
-    
+  
+    @PreAuthorize("hasAuthority('UserAuto:findByUser')")  
     @PostMapping("/findByUser")
     @ResponseBody
     public List<User> findByUser(FindByUserRequest request) throws Exception {
@@ -126,7 +134,8 @@ public class UserAutoController {
         }
         return list;
     }
-    
+  
+    @PreAuthorize("hasAuthority('UserAuto:findUserByPage')")   
     @PostMapping("/findUserByPage")
     @ResponseBody
     public Page<User> findUserByPage(PageRequest<FindByUserRequest> request) throws Exception {

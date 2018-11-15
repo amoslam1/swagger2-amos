@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:33
+ * 时间：2018-11-15 20:01:34
  * 内容：RolePermissionsRel Object
  * ===============================
 */

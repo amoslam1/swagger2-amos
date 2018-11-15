@@ -23,11 +23,6 @@ public class User implements Serializable {
     private String password;
 
     /**
-     * 盐（随机数）
-     */
-    private String salt;
-
-    /**
      * 邮箱
      */
     private String email;
@@ -48,12 +43,6 @@ public class User implements Serializable {
      */
     @Column(name = "is_disable")
     private Byte isDisable;
-
-    /**
-     * 用户会话ID
-     */
-    @Column(name = "session_id")
-    private String sessionId;
 
     /**
      * 创建者
@@ -134,24 +123,6 @@ public class User implements Serializable {
     }
 
     /**
-     * 获取盐（随机数）
-     *
-     * @return salt - 盐（随机数）
-     */
-    public String getSalt() {
-        return salt;
-    }
-
-    /**
-     * 设置盐（随机数）
-     *
-     * @param salt 盐（随机数）
-     */
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-    /**
      * 获取邮箱
      *
      * @return email - 邮箱
@@ -221,24 +192,6 @@ public class User implements Serializable {
      */
     public void setIsDisable(Byte isDisable) {
         this.isDisable = isDisable;
-    }
-
-    /**
-     * 获取用户会话ID
-     *
-     * @return session_id - 用户会话ID
-     */
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    /**
-     * 设置用户会话ID
-     *
-     * @param sessionId 用户会话ID
-     */
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
     }
 
     /**
@@ -322,12 +275,10 @@ public class User implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
-        sb.append(", salt=").append(salt);
         sb.append(", email=").append(email);
         sb.append(", name=").append(name);
         sb.append(", portraitUrl=").append(portraitUrl);
         sb.append(", isDisable=").append(isDisable);
-        sb.append(", sessionId=").append(sessionId);
         sb.append(", creator=").append(creator);
         sb.append(", operator=").append(operator);
         sb.append(", createdTime=").append(createdTime);

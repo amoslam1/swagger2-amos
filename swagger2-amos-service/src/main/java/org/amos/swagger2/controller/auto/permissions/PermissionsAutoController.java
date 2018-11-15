@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.amos.swagger2.controller.bean.request.auto.permissions.SavePermissionsRequest;
 import org.amos.swagger2.controller.bean.request.auto.permissions.UpdatePermissionsRequest;
@@ -32,7 +33,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:31
+ * 时间：2018-11-15 20:01:32
  * 内容：PermissionsAutoController
  * ===============================
 */
@@ -44,6 +45,7 @@ public class PermissionsAutoController {
     @Autowired
     private PermissionsAutoService permissionsService;
 
+	@PreAuthorize("hasAuthority('PermissionsAuto:save')")
     @PostMapping("/save")
     @ResponseBody
     public Boolean save(SavePermissionsRequest request) {
@@ -54,6 +56,7 @@ public class PermissionsAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('PermissionsAuto:delete')")
     @PostMapping("/delete")
     @ResponseBody
     public Boolean delete(DeletePermissionsRequest request) {
@@ -63,6 +66,7 @@ public class PermissionsAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('PermissionsAuto:update')")
     @PostMapping("/update")
     @ResponseBody
     public Boolean update(UpdatePermissionsRequest request) {
@@ -73,6 +77,7 @@ public class PermissionsAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('PermissionsAuto:getById')")
     @PostMapping("/getById")
     @ResponseBody
     public Permissions getById(GetByIdPermissionsRequest request) {
@@ -80,7 +85,8 @@ public class PermissionsAutoController {
         Permissions permissions = permissionsService.getById(request.getId());
         return permissions;
     }
-    
+  
+  	@PreAuthorize("hasAuthority('PermissionsAuto:findAll')")  
     @PostMapping("/findAll")
     @ResponseBody
     public List<Permissions> findAll() {
@@ -93,7 +99,8 @@ public class PermissionsAutoController {
         }
         return list;
     }
-    
+   
+  	@PreAuthorize("hasAuthority('PermissionsAuto:getByPermissions')")
     @PostMapping("/getByPermissions")
     @ResponseBody
     public Permissions getByPermissions(FindByPermissionsRequest request) throws Exception {
@@ -109,7 +116,8 @@ public class PermissionsAutoController {
     	}
         return obj;
     }
-    
+  
+    @PreAuthorize("hasAuthority('PermissionsAuto:findByPermissions')")  
     @PostMapping("/findByPermissions")
     @ResponseBody
     public List<Permissions> findByPermissions(FindByPermissionsRequest request) throws Exception {
@@ -126,7 +134,8 @@ public class PermissionsAutoController {
         }
         return list;
     }
-    
+  
+    @PreAuthorize("hasAuthority('PermissionsAuto:findPermissionsByPage')")   
     @PostMapping("/findPermissionsByPage")
     @ResponseBody
     public Page<Permissions> findPermissionsByPage(PageRequest<FindByPermissionsRequest> request) throws Exception {

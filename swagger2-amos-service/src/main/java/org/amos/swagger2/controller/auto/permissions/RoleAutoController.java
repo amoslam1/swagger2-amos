@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import org.amos.swagger2.controller.bean.request.auto.permissions.SaveRoleRequest;
 import org.amos.swagger2.controller.bean.request.auto.permissions.UpdateRoleRequest;
@@ -32,7 +33,7 @@ import tk.mybatis.mapper.entity.Example;
 /**
  * ===============================
  * 作者：amos lam
- * 时间：2018-11-15 18:58:31
+ * 时间：2018-11-15 20:01:32
  * 内容：RoleAutoController
  * ===============================
 */
@@ -44,6 +45,7 @@ public class RoleAutoController {
     @Autowired
     private RoleAutoService roleService;
 
+	@PreAuthorize("hasAuthority('RoleAuto:save')")
     @PostMapping("/save")
     @ResponseBody
     public Boolean save(SaveRoleRequest request) {
@@ -54,6 +56,7 @@ public class RoleAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RoleAuto:delete')")
     @PostMapping("/delete")
     @ResponseBody
     public Boolean delete(DeleteRoleRequest request) {
@@ -63,6 +66,7 @@ public class RoleAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RoleAuto:update')")
     @PostMapping("/update")
     @ResponseBody
     public Boolean update(UpdateRoleRequest request) {
@@ -73,6 +77,7 @@ public class RoleAutoController {
         return true;
     }
 
+	@PreAuthorize("hasAuthority('RoleAuto:getById')")
     @PostMapping("/getById")
     @ResponseBody
     public Role getById(GetByIdRoleRequest request) {
@@ -80,7 +85,8 @@ public class RoleAutoController {
         Role role = roleService.getById(request.getId());
         return role;
     }
-    
+  
+  	@PreAuthorize("hasAuthority('RoleAuto:findAll')")  
     @PostMapping("/findAll")
     @ResponseBody
     public List<Role> findAll() {
@@ -93,7 +99,8 @@ public class RoleAutoController {
         }
         return list;
     }
-    
+   
+  	@PreAuthorize("hasAuthority('RoleAuto:getByRole')")
     @PostMapping("/getByRole")
     @ResponseBody
     public Role getByRole(FindByRoleRequest request) throws Exception {
@@ -109,7 +116,8 @@ public class RoleAutoController {
     	}
         return obj;
     }
-    
+  
+    @PreAuthorize("hasAuthority('RoleAuto:findByRole')")  
     @PostMapping("/findByRole")
     @ResponseBody
     public List<Role> findByRole(FindByRoleRequest request) throws Exception {
@@ -126,7 +134,8 @@ public class RoleAutoController {
         }
         return list;
     }
-    
+  
+    @PreAuthorize("hasAuthority('RoleAuto:findRoleByPage')")   
     @PostMapping("/findRoleByPage")
     @ResponseBody
     public Page<Role> findRoleByPage(PageRequest<FindByRoleRequest> request) throws Exception {
